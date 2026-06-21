@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOI Incess Summer Escape | Banyuwangi & Surabaya 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1597ff;
+      --deep-blue: #0759b8;
+      --yellow: #ffe35b;
+      --orange: #ff8a2a;
+      --cream: #fff8de;
+      --white: #ffffff;
+      --ink: #17324d;
+      --soft: #e8f6ff;
+      --shadow: 0 24px 60px rgba(7, 89, 184, .18);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 227, 91, .65), transparent 28%),
+        radial-gradient(circle at 90% 5%, rgba(255, 138, 42, .35), transparent 30%),
+        linear-gradient(180deg, #dff5ff 0%, #fff8de 45%, #fff 100%);
+      overflow-x: hidden;
+    }
+
+    .bubble {
+      position: fixed;
+      border-radius: 999px;
+      opacity: .28;
+      pointer-events: none;
+      filter: blur(.4px);
+      animation: float 7s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .b1 { width: 120px; height: 120px; background: var(--yellow); top: 12%; left: -30px; }
+    .b2 { width: 90px; height: 90px; background: var(--orange); top: 45%; right: -20px; animation-delay: 1s; }
+    .b3 { width: 70px; height: 70px; background: var(--blue); bottom: 12%; left: 8%; animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-22px) rotate(8deg); }
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      position: sticky;
+      top: 12px;
+      z-index: 99;
+      margin-top: 14px;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      border: 2px solid rgba(255,255,255,.8);
+      border-radius: 24px;
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(7, 89, 184, .12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Baloo 2", cursive;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--deep-blue);
+      white-space: nowrap;
+    }
+
+    .links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: var(--deep-blue);
+      background: var(--soft);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .85rem;
+    }
+
+    header {
+      padding: 70px 0 35px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      color: #8a4a00;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 10px 0 rgba(255,138,42,.18);
+    }
+
+    h1 {
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: .86;
+      margin: 22px 0 16px;
+      letter-spacing: -2px;
+      color: var(--deep-blue);
+    }
+
+    .highlight {
+      color: var(--orange);
+      text-shadow: 4px 4px 0 var(--yellow);
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.75;
+      max-width: 640px;
+      margin: 0 0 22px;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 14px 0 rgba(255,138,42,.22);
+    }
+
+    .btn.secondary {
+      background: var(--white);
+      color: var(--deep-blue);
+      border: 2px solid #bde9ff;
+      box-shadow: none;
+    }
+
+    .polaroid-wrap {
+      position: relative;
+      min-height: 420px;
+    }
+
+    .polaroid {
+      position: absolute;
+      background: white;
+      border-radius: 26px;
+      padding: 12px 12px 22px;
+      box-shadow: var(--shadow);
+      transform: rotate(-4deg);
+      width: 72%;
+      right: 8%;
+      top: 0;
+    }
+
+    .polaroid:nth-child(2) {
+      transform: rotate(6deg);
+      width: 66%;
+      left: 0;
+      top: 130px;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+    }
+
+    .polaroid p {
+      margin: 10px 6px 0;
+      font-family: "Baloo 2", cursive;
+      font-weight: 800;
+      color: var(--deep-blue);
+      font-size: 1.1rem;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 20px 0 46px;
+    }
+
+    .quick-card {
+      background: rgba(255,255,255,.75);
+      border: 2px solid #fff;
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: 0 14px 34px rgba(7,89,184,.09);
+    }
+
+    .quick-card span {
+      display: block;
+      font-size: 1.85rem;
+      margin-bottom: 8px;
+    }
+
+    .quick-card strong {
+      display: block;
+      color: var(--deep-blue);
+      font-family: "Baloo 2", cursive;
+      font-size: 1.25rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 40px auto 24px;
+      max-width: 760px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: var(--deep-blue);
+      line-height: .95;
+    }
+
+    .section-title p {
+      margin: 10px 0 0;
+      font-weight: 600;
+      color: #45627f;
+    }
+
+    .day-card {
+      background: rgba(255,255,255,.82);
+      border: 2px solid #fff;
+      border-radius: 34px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .day-card::before {
+      content: "";
+      position: absolute;
+      right: -46px;
+      top: -46px;
+      width: 130px;
+      height: 130px;
+      background: var(--yellow);
+      border-radius: 50%;
+      opacity: .55;
+    }
+
+    .day-top {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 12px;
+    }
+
+    .day-badge {
+      background: var(--blue);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: .8px;
+    }
+
+    .day-top h2 {
+      margin: 0;
+      font-family: "Baloo 2", cursive;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--deep-blue);
+    }
+
+    .activities {
+      display: grid;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .activity {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      background: linear-gradient(90deg, #f0fbff, #fff);
+      border: 1px solid #ccefff;
+      border-radius: 22px;
+      padding: 14px;
+      align-items: start;
+    }
+
+    .time {
+      background: #fff0bd;
+      color: #8a4a00;
+      border-radius: 16px;
+      padding: 10px;
+      text-align: center;
+      font-weight: 900;
+      font-size: .92rem;
+    }
+
+    .activity h3 {
+      margin: 0 0 4px;
+      color: var(--deep-blue);
+      font-size: 1rem;
+    }
+
+    .activity p {
+      margin: 0;
+      color: #58708a;
+      font-size: .92rem;
+      font-weight: 500;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 28px 0;
+    }
+
+    .place-card {
+      min-height: 430px;
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      background-size: cover;
+      background-position: center;
+      isolation: isolate;
+    }
+
+    .place-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 28%, rgba(0, 43, 91, .78));
+      z-index: -1;
+    }
+
+    .place-content {
+      position: absolute;
+      bottom: 0;
+      padding: 24px;
+      color: white;
+    }
+
+    .place-content .tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: #8a4a00;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .place-content h3 {
+      margin: 0 0 8px;
+      font-family: "Baloo 2", cursive;
+      font-size: 2.3rem;
+      line-height: .9;
+    }
+
+    .place-content p {
+      margin: 0;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .packing {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 18px 0 50px;
+    }
+
+    .note-box {
+      background: var(--deep-blue);
+      color: white;
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .note-box.orange { background: var(--orange); }
+
+    .note-box h3 {
+      margin: 0 0 12px;
+      font-family: "Baloo 2", cursive;
+      font-size: 2rem;
+    }
+
+    .note-box ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.9;
+      font-weight: 600;
+    }
+
+    .github {
+      background: #ffffff;
+      border: 2px dashed var(--orange);
+      border-radius: 34px;
+      padding: 24px;
+      margin-bottom: 60px;
+      box-shadow: var(--shadow);
+    }
+
+    .github h2 {
+      margin: 0 0 10px;
+      font-family: "Baloo 2", cursive;
+      color: var(--deep-blue);
+      font-size: 2.4rem;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      counter-reset: step;
+      margin-top: 14px;
+    }
+
+    .step {
+      counter-increment: step;
+      background: #f0fbff;
+      border-radius: 20px;
+      padding: 15px;
+      border: 1px solid #ccefff;
+      font-weight: 600;
+    }
+
+    .step::before {
+      content: counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      color: #8a4a00;
+      font-weight: 900;
+    }
+
+    code {
+      background: #fff0bd;
+      padding: 3px 7px;
+      border-radius: 8px;
+      color: #8a4a00;
+      font-weight: 800;
+    }
+
+    footer {
+      text-align: center;
+      padding: 34px 0 46px;
+      font-weight: 800;
+      color: var(--deep-blue);
+      font-family: "Baloo 2", cursive;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero, .photo-grid, .packing {
+        grid-template-columns: 1fr;
+      }
+
+      .polaroid-wrap {
+        min-height: 520px;
+      }
+
+      .quick-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .activity {
+        grid-template-columns: 1fr;
+      }
+
+      .links {
+        display: none;
+      }
+
+      .polaroid {
+        width: 82%;
+        right: 0;
+      }
+
+      .polaroid:nth-child(2) {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: min(100% - 24px, 1120px); }
+      header { padding-top: 42px; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .polaroid-wrap { min-height: 440px; }
+      .polaroid img { height: 210px; }
+      .place-card { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bubble b1"></div>
+  <div class="bubble b2"></div>
+  <div class="bubble b3"></div>
+
+  <nav class="container">
+    <div class="nav-inner">
+      <div class="logo">☀️ KOI Summer Trip</div>
+      <div class="links">
+        <a href="#itinerary">Itinerary</a>
+        <a href="#places">Spot Foto</a>
+        <a href="#github">Publish</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container">
+    <div class="hero">
+      <div>
+        <span class="eyebrow">🌊 4–6 Juli 2026 • Banyuwangi & Surabaya</span>
+        <h1>KOI INCESS <span class="highlight">SUMMER ESCAPE</span></h1>
+        <p class="subtitle">
+          Hi my first travel buddies a.k.a <b>“KOI” Incess Whatever</b> 🐟✨
+          Ini itinerary gemes kita buat trip Banyuwangi & Surabaya. Semoga lancar,
+          banyak ketawa, banyak foto, dan pulang bawa cerita lucu. May God bless this trip hahaha 💛
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#itinerary">Lihat Jadwal 🗓️</a>
+          <a class="btn secondary" href="#places">Spot Trip 📸</a>
+        </div>
+      </div>
+
+      <div class="polaroid-wrap" aria-label="Foto tempat wisata">
+        <div class="polaroid">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/De%20Djawatan%20Benculuk%20Forest%2C%20Banyuwangi.jpg" alt="De Djawatan Banyuwangi">
+          <p>De Djawatan 🌳</p>
+        </div>
+        <div class="polaroid">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Savana%20Bekol%20Taman%20Nasional%20Baluran.jpg" alt="Savana Bekol Baluran">
+          <p>Baluran Trip 🦌</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="quick-grid" aria-label="Trip summary">
+      <div class="quick-card"><span>🚆</span><strong>Train Trip</strong><p>Surabaya ↔ Banyuwangi</p></div>
+      <div class="quick-card"><span>🌳</span><strong>De Djawatan</strong><p>Foto & konten lucu</p></div>
+      <div class="quick-card"><span>🦌</span><strong>Baluran</strong><p>Adventure vibes</p></div>
+      <div class="quick-card"><span>🛍️</span><strong>Free Time</strong><p>Mall, oleh-oleh, bebas!</p></div>
+    </section>
+
+    <section id="itinerary">
+      <div class="section-title">
+        <h2>Our Cute Little Itinerary 🗺️</h2>
+        <p>Jadwalnya santai, tapi tetap rapi biar nggak chaos-chaos amat wkwk.</p>
+      </div>
+      
+        <section class="day-card" id="day-1">
+          <div class="day-top">
+            <span class="day-badge">DAY 1</span>
+            <h2>Jumat, 3 Juli 2026</h2>
+          </div>
+          <div class="activities">
+    
+            <article class="activity">
+              <div class="time">06.00 - 18.00</div>
+              <div class="activity-body">
+                <h3>On the way Jakarta → Surabaya</h3>
+                <p>Road trip mode: aktif 🚗✨</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">18.00 - 18.30</div>
+              <div class="activity-body">
+                <h3>Check in hotel Surabaya</h3>
+                <p>Taruh barang dulu, freshen up 🧳</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">19.30 - selesai</div>
+              <div class="activity-body">
+                <h3>Pakuwon Mall?</h3>
+                <p>Karena penasaran itu valid 😭🛍️</p>
+              </div>
+            </article>
+        
+          </div>
+        </section>
+    
+        <section class="day-card" id="day-2">
+          <div class="day-top">
+            <span class="day-badge">DAY 2</span>
+            <h2>Sabtu, 4 Juli 2026</h2>
+          </div>
+          <div class="activities">
+    
+            <article class="activity">
+              <div class="time">09.00</div>
+              <div class="activity-body">
+                <h3>Ketemuan di Stasiun Gubeng Surabaya</h3>
+                <p>Meet up point 🚉</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">09.30 - 15.30</div>
+              <div class="activity-body">
+                <h3>Perjalanan Surabaya → Banyuwangi</h3>
+                <p>Train trip, snack wajib 🍿</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">15.30 - 16.30</div>
+              <div class="activity-body">
+                <h3>Makan siang di Banyuwangi - Serengenge Wetan</h3>
+                <p>Isi tenaga dulu 🍽️</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">16.30 - 19.00</div>
+              <div class="activity-body">
+                <h3>Main ke pantai - Dialoog / Villa So Long</h3>
+                <p>Golden hour hunting 🌅</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">19.00 - 05.00</div>
+              <div class="activity-body">
+                <h3>Check in hotel Banyuwangi + istirahat</h3>
+                <p>Atau makan lagi kalau lapar hehe 😴</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">05.00 - 06.00</div>
+              <div class="activity-body">
+                <h3>Sate</h3>
+                <p>Early breakfast coded 🍢</p>
+              </div>
+            </article>
+        
+          </div>
+        </section>
+    
+        <section class="day-card" id="day-3">
+          <div class="day-top">
+            <span class="day-badge">DAY 3</span>
+            <h2>Minggu, 5 Juli 2026</h2>
+          </div>
+          <div class="activities">
+    
+            <article class="activity">
+              <div class="time">06.00 - 07.00</div>
+              <div class="activity-body">
+                <h3>Prepare OTW ke Jawatan</h3>
+                <p>OOTD jangan lupa 🌞</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">07.00 - 08.00</div>
+              <div class="activity-body">
+                <h3>OTW De Djawatan</h3>
+                <p>Jangan lupa beli tiket dulu 🎟️</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">08.00 - 09.00</div>
+              <div class="activity-body">
+                <h3>Foto-foto &amp; bikin konten di De Djawatan</h3>
+                <p>Fairy forest content time 🌳📸</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">09.00 - 10.00</div>
+              <div class="activity-body">
+                <h3>Balik ke hotel Banyuwangi</h3>
+                <p>Recharge bentar 🛵</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">10.00 - 12.00</div>
+              <div class="activity-body">
+                <h3>Makan siang + move hotel?</h3>
+                <p>Masih fleksibel yaa ✨</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">13.00 - 20.00</div>
+              <div class="activity-body">
+                <h3>Baluran Trip</h3>
+                <p>Africa van Java energy 🦌🌾</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">20.00 - 05.00</div>
+              <div class="activity-body">
+                <h3>Pulang, tidur, istirahat</h3>
+                <p>Full recharge after adventure 💤</p>
+              </div>
+            </article>
+        
+          </div>
+        </section>
+    
+        <section class="day-card" id="day-4">
+          <div class="day-top">
+            <span class="day-badge">DAY 4</span>
+            <h2>Senin, 6 Juli 2026</h2>
+          </div>
+          <div class="activities">
+    
+            <article class="activity">
+              <div class="time">05.00 - 07.30</div>
+              <div class="activity-body">
+                <h3>Bangun, siap-siap pulang, sarapan pagi</h3>
+                <p>Last morning in Banyuwangi 🥐</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">07.30 - 08.00</div>
+              <div class="activity-body">
+                <h3>Ke Stasiun Banyuwangi Kota</h3>
+                <p>Bye Banyuwangi 🚉</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">08.30 - 14.30</div>
+              <div class="activity-body">
+                <h3>OTW pulang ke Surabaya</h3>
+                <p>Train back mode 🚆</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">14.30 - 20.00</div>
+              <div class="activity-body">
+                <h3>Nunggu bus: oleh-oleh / ketemu your mom / bebas</h3>
+                <p>Free time wkwk 🎁</p>
+              </div>
+            </article>
+        
+            <article class="activity">
+              <div class="time">20.00 - 06.00</div>
+              <div class="activity-body">
+                <h3>Balik ke Jakarta</h3>
+                <p>See you next trip yey 🚌</p>
+              </div>
+            </article>
+        
+          </div>
+        </section>
+    
+    </section>
+
+    <section id="places">
+      <div class="section-title">
+        <h2>Must Visit Photo Spots 📸</h2>
+        <p>Yang ini wajib masuk gallery, story, reels, dan kenangan.</p>
+      </div>
+
+      <div class="photo-grid">
+        <article class="place-card" style="background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/De%20Djawatan%20Benculuk%20Forest%2C%20Banyuwangi.jpg')">
+          <div class="place-content">
+            <span class="tag">🌳 Fairy Forest</span>
+            <h3>De Djawatan</h3>
+            <p>Spot hutan trembesi yang vibes-nya magis banget. Cocok buat foto dreamy, konten jalan pelan, dan caption sok healing.</p>
+          </div>
+        </article>
+        <article class="place-card" style="background-image: url('https://commons.wikimedia.org/wiki/Special:FilePath/Savannah%20baluran.jpg')">
+          <div class="place-content">
+            <span class="tag">🦌 Africa van Java</span>
+            <h3>Baluran</h3>
+            <p>Savana luas, gunung, dan golden sunlight. Outfit earth tone atau summer color bakal cakep banget di sini.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="packing">
+      <div class="note-box">
+        <h3>Mini Packing List 🎒</h3>
+        <ul>
+          <li>Outfit summer warna cerah</li>
+          <li>Sunscreen, kacamata, topi</li>
+          <li>Powerbank + charger</li>
+          <li>Kamera / tripod kecil</li>
+          <li>Obat pribadi & minyak angin</li>
+        </ul>
+      </div>
+      <div class="note-box orange">
+        <h3>Trip Reminder 💛</h3>
+        <ul>
+          <li>Beli tiket Jawatan dulu</li>
+          <li>Datang pagi biar foto lebih enak</li>
+          <li>Jaga barang pas di stasiun</li>
+          <li>Hydrate! Jangan cuma ngopi</li>
+          <li>Have fun, jangan drama ya Incess 😭</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="github" id="github">
+      <h2>Cara Publish ke GitHub Pages 🚀</h2>
+      <p>Ikutin langkah ini biar website itinerary kamu bisa dibuka pakai link.</p>
+      <div class="steps">
+        <div class="step">Buka <b>GitHub</b>, login, lalu klik <code>New Repository</code>.</div>
+        <div class="step">Beri nama repo, misalnya <code>koi-summer-trip</code>, pilih <code>Public</code>, lalu klik <code>Create repository</code>.</div>
+        <div class="step">Upload file HTML ini, lalu ubah nama filenya jadi <code>index.html</code>.</div>
+        <div class="step">Klik <code>Commit changes</code>.</div>
+        <div class="step">Masuk ke <code>Settings</code> → <code>Pages</code>.</div>
+        <div class="step">Pada bagian <code>Branch</code>, pilih <code>main</code> dan folder <code>/root</code>, lalu klik <code>Save</code>.</div>
+        <div class="step">Tunggu 1–3 menit. Link website kamu biasanya jadi: <code>https://username.github.io/koi-summer-trip/</code></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Made for KOI Incess Summer Escape ☀️💙🧡
+  </footer>
+</body>
+</html>
